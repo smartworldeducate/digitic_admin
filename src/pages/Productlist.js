@@ -7,6 +7,10 @@ import { getProducts } from "../features/product/productSlice";
 import { Link } from "react-router-dom";
 const columns = [
   {
+    title: "File",
+    dataIndex: "image",
+  },
+  {
     title: "SNo",
     dataIndex: "key",
   },
@@ -24,10 +28,6 @@ const columns = [
     title: "Category",
     dataIndex: "category",
     sorter: (a, b) => a.category.length - b.category.length,
-  },
-  {
-    title: "Color",
-    dataIndex: "color",
   },
   {
     title: "Price",
@@ -55,6 +55,7 @@ const Productlist = () => {
       category: productState[i].category,
       color: productState[i].color,
       price: `${productState[i].price}`,
+      image:(<><img style={{width:'100px',height:'100px',objectFit:'contain'}} src={`${productState[i].images[0].url}`} /></>),
       action: (
         <>
           <Link to="/" className=" fs-3 text-danger">
